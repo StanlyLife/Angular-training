@@ -69,4 +69,5 @@ export class ProductListComponent implements OnInit {
     console.log('rating clicked');
     this.pageTitle = 'Product List: ' + message;
   }
+
 }
