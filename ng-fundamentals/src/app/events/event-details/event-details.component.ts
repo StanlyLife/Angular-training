@@ -1,6 +1,7 @@
-import { EventService } from './../shared/events.service';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IEvent } from './../shared/event.model';
+import { EventService } from './../shared/events.service';
 
 @Component({
   selector: '',
@@ -17,13 +18,13 @@ import { ActivatedRoute } from '@angular/router';
   ],
 })
 export class EventDetailsComponent {
-  event: any;
+  public event: IEvent;
   constructor(
     private eventService: EventService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
+    this.event = this.eventService.getEvent(+this.route.snapshot.params.id);
   }
 }

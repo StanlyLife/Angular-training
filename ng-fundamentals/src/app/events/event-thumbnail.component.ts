@@ -1,3 +1,4 @@
+import { IEvent } from './shared/event.model';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -9,7 +10,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
       <div>Time: {{ event.time }}</div>
       <div>Price: {{ event.price }}</div>
       <div>
-        <span>Location: {{ event.location.adress }}</span>
+        <span>Location: {{ event.location.address }}</span>
         <span>&nbsp;</span>
         <span>{{ event.location.city }} {{ event.location.country }}</span>
       </div>
@@ -37,7 +38,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   ],
 })
 export class EventThumbnailComponent {
-  @Input() event: any;
+  @Input() event: IEvent;
 
   @Output() eventClick = new EventEmitter();
 
@@ -45,9 +46,5 @@ export class EventThumbnailComponent {
 
   handleClickMe(): void {
     this.eventClick.emit(this.event.name);
-  }
-
-  logFoo(): void {
-    console.log('foo');
   }
 }

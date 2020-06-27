@@ -11,8 +11,9 @@
             [routerLink]="['/events']"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
-            >All Events</a
           >
+            All Events
+          </a>
         </li>
         <li>
           <a
@@ -37,8 +38,17 @@
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
           <li>
-            <a [routerLink]="['user/profile']" routerLinkActive="active"
-              >Welcome LIFE</a
+            <a
+              *ngIf="!authService.isAuthenticated()"
+              [routerLink]="['user/login']"
+              >Login</a
+            >
+            <a
+              *ngIf="authService.isAuthenticated()"
+              [routerLink]="['user/profile']"
+              routerLinkActive="active"
+              >Welcome {{ authService.currentUser.firstName }}
+              {{ authService.currentUser.lastName }}</a
             >
           </li>
         </ul>

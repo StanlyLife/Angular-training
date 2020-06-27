@@ -1,3 +1,4 @@
+import { IEvent } from './shared/event.model';
 import { ToastrService } from './../common/toastr.service';
 import { Component, OnInit } from '@angular/core';
 import { EventService } from './shared/events.service';
@@ -19,13 +20,13 @@ declare let toastr;
         ></event-thumbnail>
       </div>
     </div>
-    <button class="btn btn-primary" (click)="thumbnail.logFoo()">
+    <button class="btn btn-primary">
       parse from child
     </button>
   </div>`,
 })
 export class EventListComponent implements OnInit {
-  events: any[];
+  events: IEvent[];
 
   constructor(
     private eventService: EventService,
