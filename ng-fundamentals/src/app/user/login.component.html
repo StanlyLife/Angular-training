@@ -11,14 +11,14 @@
       <label for="userName">User Name:</label>
       <em
         *ngIf="
-          (loginForm.controls.userName?.invalid &&
-            loginForm.controls.userName?.touched) ||
-          mouseoverLogin
+          loginForm.controls.userName?.invalid &&
+          (loginForm.controls.userName?.touched || mouseoverLogin)
         "
       >
         required</em
       >
       <input
+        required
         (ngModel)="(userName)"
         name="userName"
         id="userName"
@@ -31,14 +31,14 @@
       <label for="password">Password:</label>
       <em
         *ngIf="
-          (loginForm.controls.password?.invalid &&
-            loginForm.controls.password?.touched) ||
-          mouseoverLogin
+          loginForm.controls.password?.invalid &&
+          (loginForm.controls.password?.touched || mouseoverLogin)
         "
       >
         required</em
       >
       <input
+        required
         (ngModel)="(password)"
         name="password"
         id="password"
@@ -62,5 +62,53 @@
     <button type="button" (click)="cancel()" class="btn btn-default">
       Cancel
     </button>
+    <div class="form-validation">
+      <br />
+      loginForm.valid:
+      <span>
+        {{ loginForm.valid }}
+      </span>
+      <br />
+
+      loginForm.ivalid:
+      <span>
+        {{ loginForm.invalid }}
+      </span>
+
+      <br />
+      loginForm.dirty:
+      <span>
+        {{ loginForm.dirty }}
+      </span>
+
+      <br />
+      loginForm.touched:
+      <span>
+        {{ loginForm.touched }}
+      </span>
+      <br />
+      <br />
+      <br />
+      loginForm.controls.userName?.valid:
+      <span>
+        {{ loginForm.controls.userName?.valid }}
+      </span>
+      <br />
+      loginForm.controls.password?.valid:
+      <span>
+        {{ loginForm.controls.password?.valid }}
+      </span>
+    </div>
   </form>
 </div>
+
+<style>
+  .form-validation {
+    font-weight: 600;
+    color: goldenrod;
+  }
+
+  .form-validation span {
+    color: snow;
+  }
+</style>
