@@ -32,7 +32,18 @@
         }"
       >
         <label for="lastName">Last Name:</label>
-        <em *ngIf="!validateLastName()">required</em>
+        <em
+          *ngIf="
+            !validateLastName() && profileForm.controls.lastName.errors.required
+          "
+          >required</em
+        >
+        <em
+          *ngIf="
+            !validateLastName() && profileForm.controls.lastName.errors.pattern
+          "
+          >Must start with letter</em
+        >
         <input
           formControlName="lastName"
           id="lastName"

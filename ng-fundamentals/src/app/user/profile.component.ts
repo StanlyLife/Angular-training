@@ -26,14 +26,14 @@ export class ProfileComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
-    let firstName = new FormControl(
-      this.authService.currentUser.firstName,
-      Validators.required
-    );
-    let lastName = new FormControl(
-      this.authService.currentUser.lastName,
-      Validators.required
-    );
+    let firstName = new FormControl(this.authService.currentUser.firstName, [
+      Validators.required,
+      Validators.pattern('[a-zA-z].*'),
+    ]);
+    let lastName = new FormControl(this.authService.currentUser.lastName, [
+      Validators.required,
+      Validators.pattern('[a-zA-z].*'),
+    ]);
     this.profileForm = new FormGroup({
       firstName: firstName,
       lastName: lastName,
